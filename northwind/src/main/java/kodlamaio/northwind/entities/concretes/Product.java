@@ -3,6 +3,7 @@ package kodlamaio.northwind.entities.concretes;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,7 +16,10 @@ public class Product {
 	}
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// "strategy = GenerationType.IDENTITY" Bunun anlamı Spring'in primary key'i
+	// oluşturmaması ve veritabanının (Postgre'nin) otomatik olarak id'yi oluştutup
+	// arttırmasıdır.
 	@Column(name = "product_id")
 	private int id;
 
