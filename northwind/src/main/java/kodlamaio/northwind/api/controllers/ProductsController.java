@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.northwind.business.abstracts.ProductService;
@@ -40,4 +41,12 @@ public class ProductsController {
 
 	// Burada @RequestBody verilen veriyi JSON verisine dönüştürüp gönderiyor.
 	// Bu işleme Mapping(eşleştirme) de deniliyor.
+
+	@GetMapping("/getbyproductname")
+	public DataResult<Product> getByProductName(@RequestParam String productName) {
+		return this.productService.getByProductName(productName);
+		// Burada @RequestParam anotasyonuyla getByProductName() metoduna gönderilen
+		// productName parametresini okuyup productService deki getByProductName
+		// metoduna gönderme işlemini gerçekleştirir.
+	}
 }
