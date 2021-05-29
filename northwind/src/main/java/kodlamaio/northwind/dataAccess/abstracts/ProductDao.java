@@ -13,7 +13,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 	// Buarada herhangi bir implementasyona gerek kalmaksızın ilgili kolona ait
 	// Where query'leri oluşturuyor.
 
-	Product getByProductNameAndCategory(String productName, int categoryId);
+	Product getByProductNameAndCategory_CategoryId(String productName, int categoryId);
 	// Burada get query'si için find ifadesi de kullanılabilir.
 
 	List<Product> getByProductNameOrCategory(String productName, int categoryId);

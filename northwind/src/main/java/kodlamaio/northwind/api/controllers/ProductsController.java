@@ -49,4 +49,34 @@ public class ProductsController {
 		// productName parametresini okuyup productService deki getByProductName
 		// metoduna gönderme işlemini gerçekleştirir.
 	}
+
+	@GetMapping("/getByProductNameAndCategoryId")
+	public DataResult<Product> getByProductNameAndCategory(@RequestParam("productName") String productName,
+			@RequestParam("categoryId") int categoryId) {
+
+		return this.productService.getByProductNameAndCategoryId(productName, categoryId);
+
+	}
+
+	@GetMapping("/getByProductNameContains")
+	public DataResult<List<Product>> getByProductNameContains(@RequestParam String productName) {
+
+		return this.productService.getByProductNameContains(productName);
+
+	}
+
+	@GetMapping("/getAllByPage")
+	public DataResult<List<Product>> getAll(int pageNo, int pageSize) {
+
+		return this.productService.getAll(pageNo - 1, pageSize);
+
+	}
+
+	@GetMapping("/getAllSorted")
+	public DataResult<List<Product>> getAllSorted() {
+
+		return this.productService.getAllSorted();
+
+	}
+
 }

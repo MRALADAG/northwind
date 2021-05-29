@@ -14,7 +14,13 @@ public interface ProductService {
 
 	DataResult<Product> getByProductName(String productName);
 
-	DataResult<Product> getByProductNameAndCategory(String productName, int categoryId);
+	DataResult<List<Product>> getAll(int pageNo, int pageSize);
+	// Bu metoda Pageable metodu deniliyor.
+
+	DataResult<List<Product>> getAllSorted();
+	// Geri bildirim parametreleri sıralı bir şekilde verilir.
+
+	DataResult<Product> getByProductNameAndCategoryId(String productName, int categoryId);
 
 	DataResult<List<Product>> getByProductNameOrCategory(String productName, int categoryId);
 
