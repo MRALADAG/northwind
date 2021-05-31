@@ -15,6 +15,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service
 public class ProductManager implements ProductService {
@@ -113,6 +114,13 @@ public class ProductManager implements ProductService {
 		// istiyorsak o kolonun ismini yazmalıyız.
 		// Sort.Direction.DESC bu kısım ASC olarak da ayarlanabilmektedir.
 		return new SuccessDataResult<List<Product>>(this.productDao.findAll(sort));
+
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails());
 
 	}
 

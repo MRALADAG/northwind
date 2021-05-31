@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductDao extends JpaRepository<Product, Integer> {
 
@@ -29,5 +30,13 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 	List<Product> getByNameAndCategory(String productName, int categoryId);
 	// Bu yapıya JPQL deniliyor.
 	// select * from products where product_name=bisey and category_id=bisey
+
+	@Query("Select new kodlamaio.northwind.entities.dtos.ProductWithCategoryDto(p.id, p.productName, c.categoryName) From Category c Inner Join c.products p")
+	List<ProductWithCategoryDto> getProductWithCategoryDetails();
+	// Burada productDto için yazmış olduğumuz Dto sınıfının package yolu
+	// gösterilir.
+
+	// select * from category c inner join product p on c.categoryId = p.categoryId
+	// select p.productId, p.productName, c.categoryName
 
 }
